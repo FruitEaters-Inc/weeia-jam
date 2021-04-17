@@ -15,6 +15,8 @@ class TileType(Enum):
     CRATE = 5
     PLAYER = 6
 
+
+
 class Direction(Enum):
     UP = 1
     LEFT = 2
@@ -27,6 +29,7 @@ TILE_DICT = {
     'X': [TileType.CRATE, 'crate.png'],
     '|': [TileType.BORDER, 'border.png'],
     '@': [TileType.PLAYER, 'player.png']}
+
 
 MOVEABLE_TILE = [TileType.CRATE, TileType.PLAYER]
 ENTERABLE = [TileType.EMPTY]
@@ -43,7 +46,7 @@ class Environment:
         self.width = WIDTH
         self.sprite_size = SPRITE_SIZE
         self.tileMatrix = [
-            [Tile(*TILE_DICT['#']) for i in range(0, self.width)
+            [Tile(*TILE_DICT['-']) for i in range(0, self.width)
                 ] for x in range(0, self.height)]
 
         self.openFile(path)
