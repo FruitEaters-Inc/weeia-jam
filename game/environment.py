@@ -7,13 +7,14 @@ WIDTH = 20
 HEIGHT = 20
 SPRITE_SIZE = 32
 
-
 class TileType(Enum):
     EMPTY = 1
     WALL = 2
     DEATH = 3
     BORDER = 4
     CRATE = 5
+    PLAYER = 6
+
 
 
 class Direction(Enum):
@@ -22,20 +23,22 @@ class Direction(Enum):
     DOWN = 3
     RIGHT = 4
 
-
 TILE_DICT = {
     '#': [TileType.WALL, 'chest.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
-    '|': [TileType.BORDER, 'border.png']
-}
+    '|': [TileType.BORDER, 'border.png'],
+    '@': [TileType.PLAYER, 'player.png']}
 
+
+MOVEABLE_TILE = [TileType.CRATE, TileType.PLAYER]
+ENTERABLE = [TileType.EMPTY]
 
 class Tile:
     def __init__(self, tileType, fileName):
         self.type = tileType
-        self.sprite = pygame.image.load(os.path.join('game','assets','textures', fileName))
-
+        self.sprite = pygame.image.load(
+            os.path.join('game','assets','textures', fileName))
 
 class Environment:
     def __init__(self, path):
@@ -43,7 +46,7 @@ class Environment:
         self.width = WIDTH
         self.sprite_size = SPRITE_SIZE
         self.tileMatrix = [
-            [Tile(*TILE_DICT['#']) for i in range(0, self.width)
+            [Tile(*TILE_DICT['-']) for i in range(0, self.width)
                 ] for x in range(0, self.height)]
 
         self.openFile(path)
@@ -55,32 +58,29 @@ class Environment:
                     if str(ch) in list(TILE_DICT.keys()):
                         self.tileMatrix[yIndex][xIndex] = Tile(*TILE_DICT[ch])
 
-    def print(self):
-        for y in range(self.height):
-            for x in range(self.width):
-                print(self.matrix[y][x], end='')
-            print()
-
     def draw(self, winObj):
         for y in range(self.height):
             for x in range(self.width):
-                winObj.blit(self.tileMatrix[y][x].sprite, (x * self.sprite_size, y * self.sprite_size))
+                winObj.blit(
+                    self.tileMatrix[y][x].sprite, 
+                    (x * self.sprite_size, y * self.sprite_size))
 
         pygame.display.update()
 
-    #   def identifyField(self, x, y):
-    #       return self.tileTypeMatrix[x, y]
+    def getPlayerPosition(self):
+        for y in range(0, self.height):
+            for x in range(0, self.width):
+                if self.tileMatrix[y][x].type == TileType.PLAYER:
+                    return x, y
 
-    def movePlayer(self):
-        print("Todo")
+    def update(self, srcX, srcY, dstX, dstY):
+        src = self.tileMatrix[srcY][srcX]
+        dst = self.tileMatrix[dstY][dstX]
+        src, dst = dst, src
 
-    def checkPlayerMove(self, expX, expY):
-        if expX >= self.width | expY >= self.height | self.tileMatrix[expY][expX].type != TileType.EMPTY:
-            return
-        else:
-            Environment.movePlayer()
-
-
-if __name__ == '__main__':
-    env = Environment()
-    env.print()
+    def checkMove(self, targetX, targetY, expX, expY):
+        if not (expX >= self.width | expY >= self.height):
+            if self.tileMatrix[expY][expX].type in MOVEABLE_TILE:
+                checkMove(self, expX, expY, expX+expX, expY+expY)
+            if self.tileMatrix[expY][expX] in ENTERABLE:
+                update(targetX, targetY, expX, expY)
