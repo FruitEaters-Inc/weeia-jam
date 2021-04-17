@@ -21,6 +21,7 @@ class TileType(Enum):
     BORDER = 4
     CRATE = 5
     PLAYER = 6
+    WALL1 = 7
 
 
 
@@ -31,7 +32,8 @@ class Direction(Enum):
     RIGHT = 4
 
 TILE_DICT = {
-    '#': [TileType.WALL, 'crate.png'],
+    '#': [TileType.WALL, 'wall1.png'],
+    '$': [TileType.WALL1, 'wall2.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
     '|': [TileType.BORDER, 'border.png'],
