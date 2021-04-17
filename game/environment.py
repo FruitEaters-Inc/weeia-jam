@@ -42,7 +42,7 @@ TILE_DICT = {
 
 
 MOVEABLE_TILE = [TileType.CRATE, TileType.PLAYER]
-ENTERABLE = [TileType.EMPTY]
+ENTERABLE = [TileType.EMPTY, TileType.BRIDGE]
 
 class Tile:
     def __init__(self, tileType, fileName):
@@ -84,9 +84,12 @@ class Environment:
                     return x, y
 
     def update(self, srcX, srcY, dstX, dstY):
-        src = self.tileMatrix[srcY][srcX]
         dst = self.tileMatrix[dstY][dstX]
-        self.tileMatrix[srcY][srcX], self.tileMatrix[dstY][dstX] = dst, src
+        if dst.type == TileType.BRIDGE:
+            dst = Tile(*TILE_DICT['_'])
+        src = self.tileMatrix[srcY][srcX]
+        self.tileMatrix[srcY][srcX] = dst
+        self.tileMatrix[dstY][dstX] = src
 
     def movePlayer(self, keys):
         move = [0, 0]
@@ -112,6 +115,12 @@ class Environment:
         if self.tileMatrix[dstY][dstX].type in ENTERABLE:
             self.update(srcX, srcY, dstX, dstY)
             return True
+        
+        if self.tileMatrix[dstY][dstX].type == TileType.DEATH:
+            if self.tileMatrix[srcY][srcX].type == TileType.CRATE:
+                self.tileMatrix[srcY][srcX] = Tile(*TILE_DICT['_'])
+                self.tileMatrix[dstY][dstX] = Tile(*TILE_DICT['T'])
+                return True
 
         if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
             if self.checkMove(dstX, dstY, move):
