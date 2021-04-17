@@ -14,6 +14,7 @@ class TileType(Enum):
     DEATH = 3
     BORDER = 4
     CRATE = 5
+    GLASS = 6
 
 
 class Direction(Enum):
@@ -27,7 +28,8 @@ TILE_DICT = {
     '#': [TileType.WALL, 'chest.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
-    '|': [TileType.BORDER, 'border.png']
+    '|': [TileType.BORDER, 'border.png'],
+    '-': [TileType.GLASS, 'glass1.png']
 }
 
 
@@ -43,7 +45,7 @@ class Environment:
         self.width = WIDTH
         self.sprite_size = SPRITE_SIZE
         self.tileMatrix = [
-            [Tile(*TILE_DICT['#']) for i in range(0, self.width)
+            [Tile(*TILE_DICT['-']) for i in range(0, self.width)
                 ] for x in range(0, self.height)]
 
         self.openFile(path)
