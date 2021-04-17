@@ -3,7 +3,7 @@ import os
 from game.game import *
 
 
-
+env = Environment()
 # lets make a new window that takes our width and height
 HEIGHT, WIDTH = (env.height * env.sprite_size), (env.width * env.sprite_size)
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -16,36 +16,14 @@ PLAYER_WIDTH, PLAYER_HEIGHT = 150, 150
 PLAYER_X, PLAYER_Y = 100, 300
 VEL = 10
 
-PLAYER_IMAGE = pygame.image.load(
-    os.path.join('Assets', 'Sprite1.png'))
-PLAYER = pygame.transform.scale(PLAYER_IMAGE, (PLAYER_WIDTH, PLAYER_HEIGHT))
-
-def drawWindow(playerHitbox):
+def drawWindow():
     # drawing a background here
 
     WIN.fill(BG_COLOR)
-    WIN.blit(PLAYER, (playerHitbox.x, playerHitbox.y))
-    pygame.display.update()
-
-
-
-def movePlayer(keys_pressed, player):
-    if keys_pressed[pygame.K_a]:  # LEFT
-        player.x -= VEL
-    if keys_pressed[pygame.K_d]:  # RIGHT
-        player.x += VEL
-    if keys_pressed[pygame.K_w]:  # UP
-        player.y -= VEL
-    if keys_pressed[pygame.K_s]:  # DOWN
-        player.y += VEL
-
+    env.draw(WIN)
 
 # main window
 def main():
-
-    env = Environment()
-    playerHitbox = pygame.Rect(150, 150, PLAYER_WIDTH, PLAYER_HEIGHT)
-
     clock = pygame.time.Clock()
 
     run = True
@@ -57,8 +35,7 @@ def main():
 
 
         keys_pressed = pygame.key.get_pressed()
-        movePlayer(keys_pressed, playerHitbox)
-        drawWindow(playerHitbox)
+        drawWindow()
 
     pygame.quit()
 
