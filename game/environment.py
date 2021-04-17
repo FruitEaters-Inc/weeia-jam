@@ -24,7 +24,7 @@ class Direction(Enum):
 
 
 TILE_DICT = {
-    '#': [TileType.WALL, 'wall.png'],
+    '#': [TileType.WALL, 'chest.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
     '|': [TileType.BORDER, 'border.png']
@@ -34,7 +34,7 @@ TILE_DICT = {
 class Tile:
     def __init__(self, tileType, fileName):
         self.type = tileType
-        self.sprite = pygame.image.load(os.path.join('game', 'Assets', fileName))
+        self.sprite = pygame.image.load(os.path.join('game','assets','textures', fileName))
 
 
 class Environment:
@@ -42,16 +42,18 @@ class Environment:
         self.height = HEIGHT
         self.width = WIDTH
         self.sprite_size = SPRITE_SIZE
-        self.tileMatrix = [[Tile(TileType.WALL, 'wall.png') for i in range(0, self.width)] for x in
-                           range(0, self.height)]
+        self.tileMatrix = [
+            [Tile(*TILE_DICT['#']) for i in range(0, self.width)
+                ] for x in range(0, self.height)]
 
         self.openFile(path)
 
     def openFile(self, path):
-        with (open(path)) as file:
-            for yIndex, line in enumerate(file):
+        with (open(path)) as f:
+            for yIndex, line in enumerate(f):
                 for xIndex, ch in enumerate(line):
-                    self.tileMatrix[yIndex][xIndex] = Tile(*TILE_DICT[ch])
+                    if str(ch) in list(TILE_DICT.keys()):
+                        self.tileMatrix[yIndex][xIndex] = Tile(*TILE_DICT[ch])
 
     def print(self):
         for y in range(self.height):
@@ -62,8 +64,7 @@ class Environment:
     def draw(self, winObj):
         for y in range(self.height):
             for x in range(self.width):
-                if self.tileTypeMatrix[y][x]:
-                    winObj.blit(self.CRATE_IMAGE, (x * self.sprite_size, y * self.sprite_size))
+                winObj.blit(self.tileMatrix[y][x].sprite, (x * self.sprite_size, y * self.sprite_size))
 
         pygame.display.update()
 

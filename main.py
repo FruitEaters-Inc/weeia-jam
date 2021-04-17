@@ -3,7 +3,7 @@ import os
 from game.environment import *
 
 
-env = Environment()
+env = Environment(os.path.join('game','assets','levels','leveldebug.txt'))
 # lets make a new window that takes our width and height
 HEIGHT, WIDTH = (env.height * env.sprite_size), (env.width * env.sprite_size)
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
