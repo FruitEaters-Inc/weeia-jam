@@ -24,12 +24,11 @@ def main():
     music.set_volume(0.1)
     music.play(-1)
 
-    run = True
-    while run:
+    while True:
         clock.tick(FPS)  # control FPS of the game
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
+            if event.type == pygame.QUIT: 
+                break
             if event.type == pygame.KEYDOWN:
                 key = pygame.key.get_pressed()
                 env.movePlayer(key)
