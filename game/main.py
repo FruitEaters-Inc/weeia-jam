@@ -1,8 +1,13 @@
 import pygame
 import os
+from game.game import *
 
 # lets make a new window that takes our width and height
-WIDTH, HEIGHT = 600, 600
+
+
+
+env = Environment()
+HEIGHT, WIDTH = (env.height * env.sprite_size), (env.width * env.sprite_size)
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("MindHacker")
 
