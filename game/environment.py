@@ -34,6 +34,7 @@ TILE_DICT = {
 class Tile:
     def __init__(self, tileType, fileName):
         self.type = tileType
+        self.sprite = pygame.image.load(os.path.join('game', 'Assets', fileName))
 
 
 class Environment:
