@@ -109,7 +109,5 @@ class Environment:
             if self.checkMove(dstX, dstY, move):
                 self.update(srcX, srcY, dstX, dstY)
                 return True
-
-
-        
+  
         return False
