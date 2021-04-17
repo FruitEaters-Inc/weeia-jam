@@ -35,7 +35,7 @@ TILE_DICT = {
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
     '|': [TileType.BORDER, 'border.png'],
-    '@': [TileType.PLAYER, 'chest.png']}
+    'S': [TileType.PLAYER, 'spawn.png']}
 
 
 MOVEABLE_TILE = [TileType.CRATE, TileType.PLAYER]
