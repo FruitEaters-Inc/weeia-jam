@@ -22,6 +22,8 @@ class TileType(Enum):
     CRATE = 5
     PLAYER = 6
     WALL1 = 7
+    SKY = 8
+    BIRD = 9
 
 
 
@@ -33,6 +35,8 @@ class Direction(Enum):
 
 TILE_DICT = {
     '#': [TileType.WALL, 'wall1.png'],
+    '>': [TileType.BIRD, 'bird.png'],
+    '0': [TileType.BIRD, 'sky.png'],
     '$': [TileType.WALL1, 'wall2.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
