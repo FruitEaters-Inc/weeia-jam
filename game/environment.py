@@ -106,7 +106,9 @@ class Environment:
             return True
 
         if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
-            return self.checkMove(dstX, dstY, move)
+            if self.checkMove(dstX, dstY, move):
+                self.update(srcX, srcY, dstX, dstY)
+                return True
 
 
         
