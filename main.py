@@ -30,11 +30,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-
             if event.type == pygame.KEYDOWN:
-                pass
-        
-        keys_pressed = pygame.key.get_pressed()
+                key = pygame.key.get_pressed()
+                env.movePlayer(key)
+                    
         env.draw(WIN)
 
     pygame.quit()

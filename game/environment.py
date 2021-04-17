@@ -3,6 +3,13 @@ import os
 from game import *
 import pygame
 
+MOVE_DICT = {
+    pygame.K_a: [-1,0],
+    pygame.K_s: [0, 1],
+    pygame.K_d: [1, 0],
+    pygame.K_w: [0,-1]
+    }
+
 WIDTH = 20
 HEIGHT = 20
 SPRITE_SIZE = 32
@@ -24,11 +31,11 @@ class Direction(Enum):
     RIGHT = 4
 
 TILE_DICT = {
-    '#': [TileType.WALL, 'chest.png'],
+    '#': [TileType.WALL, 'crate.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
     '|': [TileType.BORDER, 'border.png'],
-    '@': [TileType.PLAYER, 'player.png']}
+    '@': [TileType.PLAYER, 'chest.png']}
 
 
 MOVEABLE_TILE = [TileType.CRATE, TileType.PLAYER]
@@ -46,7 +53,7 @@ class Environment:
         self.width = WIDTH
         self.sprite_size = SPRITE_SIZE
         self.tileMatrix = [
-            [Tile(*TILE_DICT['-']) for i in range(0, self.width)
+            [Tile(*TILE_DICT['#']) for i in range(0, self.width)
                 ] for x in range(0, self.height)]
 
         self.openFile(path)
@@ -78,9 +85,26 @@ class Environment:
         dst = self.tileMatrix[dstY][dstX]
         src, dst = dst, src
 
-    def checkMove(self, targetX, targetY, expX, expY):
-        if not (expX >= self.width | expY >= self.height):
-            if self.tileMatrix[expY][expX].type in MOVEABLE_TILE:
-                checkMove(self, expX, expY, expX+expX, expY+expY)
-            if self.tileMatrix[expY][expX] in ENTERABLE:
-                update(targetX, targetY, expX, expY)
+    def movePlayer(self, keys):
+        move = [0, 0]
+        if keys[pygame.K_w]:
+            move = [0, -1]
+        if keys[pygame.K_s]:
+            move = [0, 1]
+        if keys[pygame.K_a]:
+            move = [-1, 0]
+        if keys[pygame.K_d]:
+            move = [1, 0]
+        playerX, playerY = self.getPlayerPosition()
+        self.checkMove(playerX, playerX, move)
+
+    def checkMove(self, srcX, srcY, move):
+        dstX = srcX + move[0]
+        dstY = srcY + move[1]
+        if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
+            return checkMove(self, dstX, dstY, move)
+
+        if self.tileMatrix[dstY][dstX] in ENTERABLE:
+            update(targetX, targetY, expX, expY)
+            return True
+        return False
