@@ -2,11 +2,9 @@ import pygame
 import os
 from game.game import *
 
+
+
 # lets make a new window that takes our width and height
-
-
-
-env = Environment()
 HEIGHT, WIDTH = (env.height * env.sprite_size), (env.width * env.sprite_size)
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("MindHacker")
@@ -45,6 +43,7 @@ def movePlayer(keys_pressed, player):
 # main window
 def main():
 
+    env = Environment()
     playerHitbox = pygame.Rect(150, 150, PLAYER_WIDTH, PLAYER_HEIGHT)
 
     clock = pygame.time.Clock()
