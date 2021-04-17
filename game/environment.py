@@ -83,7 +83,7 @@ class Environment:
     def update(self, srcX, srcY, dstX, dstY):
         src = self.tileMatrix[srcY][srcX]
         dst = self.tileMatrix[dstY][dstX]
-        src, dst = dst, src
+        self.tileMatrix[srcY][srcX], self.tileMatrix[dstY][dstX] = dst, src
 
     def movePlayer(self, keys):
         move = [0, 0]
@@ -96,15 +96,18 @@ class Environment:
         if keys[pygame.K_d]:
             move = [1, 0]
         playerX, playerY = self.getPlayerPosition()
-        self.checkMove(playerX, playerX, move)
+        self.checkMove(playerX, playerY, move)
 
     def checkMove(self, srcX, srcY, move):
         dstX = srcX + move[0]
         dstY = srcY + move[1]
-        if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
-            return checkMove(self, dstX, dstY, move)
-
-        if self.tileMatrix[dstY][dstX] in ENTERABLE:
-            update(targetX, targetY, expX, expY)
+        if self.tileMatrix[dstY][dstX].type in ENTERABLE:
+            self.update(srcX, srcY, dstX, dstY)
             return True
+
+        if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
+            if self.checkMove(dstX, dstY, move):
+                self.update(srcX, srcY, dstX, dstY)
+                return True
+  
         return False
