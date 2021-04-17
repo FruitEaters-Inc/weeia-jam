@@ -1,6 +1,7 @@
 import pygame
 import os
 from game.environment import *
+from pygame import mixer
 
 
 env = Environment(os.path.join('game','assets','levels','leveldebug.txt'))
@@ -24,7 +25,14 @@ def drawWindow():
 
 # main window
 def main():
+
+    pygame.init()
     clock = pygame.time.Clock()
+
+    # music
+    music = pygame.mixer.Sound(os.path.join('game', 'assets', 'music', 'background_music.mp3'))
+    music.set_volume(0.1)
+    music.play(-1)
 
     run = True
     while run:

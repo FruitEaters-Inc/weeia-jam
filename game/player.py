@@ -9,7 +9,7 @@ MOVE_DICT = {
     pygame.K_w: [0,-1]
     }
 
-class MoveableObject:
+class MoveableObject():
     def __init__(self, xPos, yPos, sprite):
         self.xPos, self.yPos = xPos, yPos
         self.sprite = sprite
