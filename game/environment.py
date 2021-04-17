@@ -3,13 +3,6 @@ import os
 from game import *
 import pygame
 
-MOVE_DICT = {
-    pygame.K_a: [-1,0],
-    pygame.K_s: [0, 1],
-    pygame.K_d: [1, 0],
-    pygame.K_w: [0,-1]
-    }
-
 WIDTH = 20
 HEIGHT = 20
 SPRITE_SIZE = 32
@@ -91,12 +84,17 @@ class Environment:
         move = [0, 0]
         if keys[pygame.K_w]:
             move = [0, -1]
-        if keys[pygame.K_s]:
+        elif keys[pygame.K_s]:
             move = [0, 1]
-        if keys[pygame.K_a]:
+        elif keys[pygame.K_a]:
             move = [-1, 0]
-        if keys[pygame.K_d]:
+        elif keys[pygame.K_d]:
             move = [1, 0]
+        elif keys[pygame.K_q]:
+            pygame.event.post(pygame.event.Event(QUIT))
+            return
+        else:
+            return
         playerX, playerY = self.getPlayerPosition()
         self.checkMove(playerX, playerY, move)
 
