@@ -6,6 +6,7 @@ class TileType(Enum):
     EMPTY = 1
     WALL = 2
     DEATH = 3
+    BORDER = 4
 
 class Direction(Enum):
     UP = 1
