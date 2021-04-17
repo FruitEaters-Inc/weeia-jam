@@ -20,8 +20,8 @@ class Direction(Enum):
 
 class Environment:
     def __init__(self):
-        self.height = 30
-        self.width = 30
+        self.height = 20
+        self.width = 20
         self.sprite_size = 32
         self.matrix = [['#' for i in range(0, self.width)] for x in range(0, self.height)]
         self.tileTypeMatrix = [[5 for i in range(0, self.width)] for x in range(0, self.height)]

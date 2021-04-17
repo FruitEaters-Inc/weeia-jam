@@ -1,6 +1,6 @@
 import pygame
 import os
-from game.game import *
+from game.environment import *
 
 
 env = Environment()
