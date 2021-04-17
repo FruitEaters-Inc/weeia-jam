@@ -30,7 +30,7 @@ def main():
     clock = pygame.time.Clock()
 
     # music
-    music = pygame.mixer.Sound(os.path.join('game', 'assets', 'music', 'background_music.mp3'))
+    music = pygame.mixer.Sound(os.path.join('game', 'assets', 'music', 'song1.wav'))
     music.set_volume(0.1)
     music.play(-1)
 
