@@ -21,7 +21,7 @@ class Environment:
         self.width = 30
         self.sprite_size = 32
         self.matrix = [['#' for i in range(0, self.width)] for x in range(0, self.height)]
-        self.tileTypeMatrix = [[TileType.EMPTY for i in range(0, self.width)] for x in range(0, self.height)]
+        self.tileTypeMatrix = [[1 for i in range(0, self.width)] for x in range(0, self.height)]
     
     def print(self):
         for y in range(self.height):
