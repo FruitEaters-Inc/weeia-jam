@@ -1,11 +1,11 @@
+import readchar
+
 class Player:
     def __init__(self, xPos, yPos):
         self.xPos = xPos
         self.yPos = yPos
     def move(self):
-        print(sys.stdin.read(1))
-
-
+        print(repr(readchar.readchar()))
 
 class Timer:
     def __init__(self):
