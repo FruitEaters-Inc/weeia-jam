@@ -17,6 +17,7 @@ class TileType(Enum):
     WALL1 = 7
     SKY = 8
     BIRD = 9
+    BRIDGE = 10
 
 
 
@@ -34,7 +35,10 @@ TILE_DICT = {
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
     '|': [TileType.BORDER, 'border.png'],
-    'S': [TileType.PLAYER, 'spawn.png']}
+    'S': [TileType.PLAYER, 'spawn.png'],
+    'V': [TileType.DEATH, 'hole1.png'],
+    'T': [TileType.BRIDGE, 'hole_crate.png']
+    }
 
 
 MOVEABLE_TILE = [TileType.CRATE, TileType.PLAYER]
