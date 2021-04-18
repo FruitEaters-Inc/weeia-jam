@@ -7,6 +7,6 @@ messagePool = [
     "UNAUTHORIZED.wav",
     "wlacz_myslenie.wav",
     "wylacz_telewizje.wav",
-    "zachodzace_slonce",
+    "zachodzace_slonce.wav",
     "zdejmij_kaganiec.wav"
 ]
