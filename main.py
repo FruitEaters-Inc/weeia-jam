@@ -2,8 +2,10 @@ import pygame
 import os
 from game.environment import *
 from pygame import mixer
+from game.assets.earDamage import *
+import random
 
-
+pygame.font.init()
 
 #CONST
 BG_COLOR = (72, 81, 163)
@@ -76,6 +78,8 @@ def main(level):
                     music.stop()
                     main(levelList.pop(0))
                 env.movePlayer(key)
+            if event.type == pygame.KEYUP:
+                playSound(random.choice(messagePool), 1, 0)
             
                     
         env.draw(WIN)
