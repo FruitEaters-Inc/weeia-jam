@@ -72,11 +72,15 @@ def main(level):
                 if key[pygame.K_r]:
                     music.stop()
                     main(level)
+                if key[pygame.K_t]:
+                    music.stop()
+                    main(levelList.pop(0))
 
                 env.movePlayer(key)
 
             if event.type == LOSE:
-                print("Foo")
+                music.stop()
+                main(level)
             if event.type == WINNER:
                 music.stop()
                 main(levelList.pop(0))
