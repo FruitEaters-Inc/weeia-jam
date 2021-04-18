@@ -18,6 +18,8 @@ class TileType(Enum):
     SKY = 8
     BIRD = 9
     BRIDGE = 10
+    SUITCASE = 11
+    DOOR = 12
 
 
 
@@ -37,7 +39,9 @@ TILE_DICT = {
     '|': [TileType.BORDER, 'border.png'],
     'S': [TileType.PLAYER, 'spawn.png'],
     'V': [TileType.DEATH, 'hole1.png'],
-    'T': [TileType.BRIDGE, 'hole_crate.png']
+    'T': [TileType.BRIDGE, 'hole_crate.png'],
+    '*': [TileType.SUITCASE, 'suitcase.png'],
+    'D': [TileType.DOOR, 'doorUp.png']
     }
 
 

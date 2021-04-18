@@ -14,7 +14,7 @@ pygame.display.set_caption("MindHacker")
 
 # main window
 def main(level):
-    env = Environment(os.path.join('game','assets','levels',level))
+    env = Environment(os.path.join('game', 'assets', 'levels', level))
     pygame.init()
     clock = pygame.time.Clock()
     WIN.fill(BG_COLOR)
@@ -31,7 +31,9 @@ def main(level):
                 break
             if event.type == pygame.KEYDOWN:
                 key = pygame.key.get_pressed()
-                if key[pygame.K_r]: main(level)
+                if key[pygame.K_r]:
+                    music.stop()
+                    main(level)
                 env.movePlayer(key)
             
                     
