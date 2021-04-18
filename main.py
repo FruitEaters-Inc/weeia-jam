@@ -12,6 +12,21 @@ windowsDimensions = (HEIGHT * SPRITE_SIZE), (HEIGHT * SPRITE_SIZE)
 WIN = pygame.display.set_mode(windowsDimensions)
 pygame.display.set_caption("MindHacker")
 
+levelList = [
+    'intro.txt',
+    'level1.txt',
+    'level2.txt',
+    'level3.txt',
+    'level4.txt',
+    'level5.txt',
+    'level6.txt',
+    'level7.txt',
+    'level8.txt',
+    'level9.txt',
+    'level11.txt',
+    'finale.txt'
+]
+
 # main window
 def main(level):
     env = Environment(os.path.join('game', 'assets', 'levels', level))
@@ -33,7 +48,7 @@ def main(level):
                 key = pygame.key.get_pressed()
                 if key[pygame.K_r]:
                     music.stop()
-                    main(level)
+                    main(levelList.pop(0))
                 env.movePlayer(key)
             
                     
@@ -42,4 +57,4 @@ def main(level):
     pygame.quit()
 
 if __name__ == "__main__":
-    main('leveldebug.txt')
+    main(levelList.pop(0))
