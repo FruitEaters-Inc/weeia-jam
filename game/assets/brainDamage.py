@@ -32,5 +32,10 @@ messagePool = [
     "...elektroniki, informatyki...",
     "...od Kether do Malkuth...",
     "...od stacji do stacji...",
-    "...za późno..."
+    "...za późno...",
+    "...stal na horyzoncie...",
+    "...horyzont ze szkła...",
+    "...biuro...",
+    "...coś się stało...",
+    "...słuchaj..."
 ]
