@@ -18,6 +18,7 @@ LOSE = pygame.USEREVENT + 2
 LOSE_FONT = WINNER_FONT
 
 class TileType(Enum):
+    GLASS = 0
     EMPTY = 1
     WALL = 2
     DEATH = 3
@@ -40,6 +41,7 @@ class Direction(Enum):
     RIGHT = 4
 
 TILE_DICT = {
+    '^': [TileType.GLASS, 'glass.png'],
     '#': [TileType.WALL, 'wall1.png'],
     '>': [TileType.BIRD, 'bird.png'],
     '0': [TileType.BIRD, 'sky.png'],
@@ -51,7 +53,8 @@ TILE_DICT = {
     'V': [TileType.DEATH, 'hole1.png'],
     'T': [TileType.BRIDGE, 'hole_crate.png'],
     '*': [TileType.SUITCASE, 'suitcase.png'],
-    'D': [TileType.DOOR, 'doorUp.png']
+    '&': [TileType.DOOR, 'doorUp.png']
+
     }
 
 
