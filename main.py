@@ -45,7 +45,10 @@ def playSound(fileName, volume, times):
 
 def printBrainDamage(listOfTexts, fontColor, fontSize, position):
         showText(random.choice(listOfTexts), fontColor, fontSize, position)
-        playSound(random.choice(earDamage), 1, 0)
+
+        randomize = random.randint(0, 100)
+        if randomize > 75:
+            playSound(random.choice(earDamage), 1, 0)
         WIN.set_colorkey(CRIMSON)
         pygame.display.update()
 
