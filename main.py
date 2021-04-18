@@ -12,26 +12,20 @@ windowsDimensions = (HEIGHT * SPRITE_SIZE), (HEIGHT * SPRITE_SIZE)
 WIN = pygame.display.set_mode(windowsDimensions)
 pygame.display.set_caption("MindHacker")
 
-#WINNER EVENT
-WINNER = pygame.USEREVENT + 1
-WINNER_FONT = pygame.font.SysFont('comicsans', 100)
-
-#LOSE EVENT
-LOSE = pygame.USEREVENT + 2
-LOSE_FONT = WINNER_FONT
-
-#FONT COLORS
-WHITE = (255, 255, 255)
-CRIMSON = (220,20,60)
-
-def showText(text, color):
-     draw_text = WINNER_FONT.render(text, 1, color)
-     WIN.blit(draw_text, (WIDTH/2 - draw_text.get_width()) /
-              2, HEIGHT/2 - draw_text.get_width()/2)
-     pygame.display.update()
-     pygame.time.delay(5000)
-
-
+levelList = [
+    'intro.txt',
+    'level1.txt',
+    'level2.txt',
+    'level3.txt',
+    'level4.txt',
+    'level5.txt',
+    'level6.txt',
+    'level7.txt',
+    'level8.txt',
+    'level9.txt',
+    'level11.txt',
+    'finale.txt'
+]
 
 # main window
 def main(level):
@@ -54,7 +48,7 @@ def main(level):
                 key = pygame.key.get_pressed()
                 if key[pygame.K_r]:
                     music.stop()
-                    main(level)
+                    main(levelList.pop(0))
                 env.movePlayer(key)
             
                     
@@ -63,4 +57,4 @@ def main(level):
     pygame.quit()
 
 if __name__ == "__main__":
-    main('leveldebug.txt')
+    main(levelList.pop(0))
