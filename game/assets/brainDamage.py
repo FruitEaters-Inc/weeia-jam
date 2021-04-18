@@ -1,4 +1,4 @@
-messagePool = [
+brainDamage = [
     "...zdejmij kaganiec...",
     "...wylacz telewizje...",
     "...włącz myslenie...",

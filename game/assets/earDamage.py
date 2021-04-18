@@ -1,4 +1,4 @@
-messagePool = [
+earDamage = [
     "aktywuj_system_windows.wav",
     "kiedy_bylo_jutro.wav",
     "kim_jestes.wav",
