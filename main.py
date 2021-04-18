@@ -3,6 +3,8 @@ import os
 from game.environment import *
 from pygame import mixer
 
+
+
 #CONST
 BG_COLOR = (72, 81, 163)
 FPS = 60
@@ -29,7 +31,13 @@ levelList = [
 
 #FONT COLORS
 WHITE = (255, 255, 255)
-CRIMSON = (220,20,60)
+CRIMSON = (220, 20, 60)
+
+
+def playSound(fileName, volume, times):
+    sound = pygame.mixer.Sound(os.path.join('game', 'assets', 'music', fileName))
+    sound.set_volume(volume)
+    sound.play(times)
 
 def showText(text, color):
      draw_text = WINNER_FONT.render(text, 1, color)
