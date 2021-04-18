@@ -139,6 +139,9 @@ class Environment:
             if self.tileMatrix[srcY][srcX].type == TileType.PLAYER:
                 pygame.event.post(pygame.event.Event(LOSE))
 
+        if self.tileMatrix[dstY][dstX].type == TileType.DOOR:
+            pygame.event.post(pygame.event.Event(WINNER))
+
         if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
             if self.checkMove(dstX, dstY, move):
                 self.update(srcX, srcY, dstX, dstY)
