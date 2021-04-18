@@ -36,12 +36,12 @@ messagePool = [
     "...stal na horyzoncie...",
     "...horyzont ze szkła...",
     "...biuro...",
-    "...coś się stało...",
-    "...słuchaj...",
-    "...wypuśćcie mnie...",
-    "...dźwięk, wizja...",
+    "...cos sie stalo...",
+    "...sluchaj...",
+    "...wypusccie mnie...",
+    "...dzwiek, wizja...",
     "...sylwetki i cienie...",
-    "...nie starcza sił...",
+    "...nie starcza sil...",
     "...koniec...?",
-    "...zamknij się!"
+    "...zamknij sie!"
 ]
