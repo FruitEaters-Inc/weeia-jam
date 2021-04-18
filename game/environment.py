@@ -31,6 +31,7 @@ class TileType(Enum):
     BRIDGE = 10
     SUITCASE = 11
     DOOR = 12
+    NPC = 13
 
 
 
@@ -48,13 +49,13 @@ TILE_DICT = {
     '$': [TileType.WALL1, 'wall2.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
-    '|': [TileType.BORDER, 'doorUp.png'],
+    '|': [TileType.BORDER, 'empty.png'],
     'S': [TileType.PLAYER, 'spawn.png'],
     'V': [TileType.DEATH, 'hole1.png'],
     'T': [TileType.BRIDGE, 'hole_crate.png'],
     '*': [TileType.SUITCASE, 'suitcase.png'],
-    '&': [TileType.DOOR, 'doorUp.png']
-
+    '&': [TileType.DOOR, 'doorUp.png'],
+    'E': [TileType.NPC, 'npc.png']
     }
 
 
@@ -100,6 +101,19 @@ class Environment:
                 if self.tileMatrix[y][x].type == TileType.PLAYER:
                     return x, y
 
+    def getNpcPosition(self):
+        for y in range(0, self.height):
+            for x in range(0, self.width):
+                if self.tileMatrix[y][x].type == TileType.NPC:
+                    return x, y
+
+    def exchange(self):
+        plX, plY = self.getPlayerPosition()
+        npcX, npcY = self.getNpcPosition()
+        self.tileMatrix[plY][plX], self.tileMatrix[npcY][npcX
+        ] = self.tileMatrix[npcY][npcX], self.tileMatrix[plY][plX]
+    
+
     def update(self, srcX, srcY, dstX, dstY):
         dst = self.tileMatrix[dstY][dstX]
         if dst.type == TileType.BRIDGE:
@@ -118,6 +132,9 @@ class Environment:
             move = [-1, 0]
         elif keys[pygame.K_d]:
             move = [1, 0]
+        elif keys[pygame.K_e]:
+            self.exchange()
+            return
         elif keys[pygame.K_q]:
             pygame.event.post(pygame.event.Event(QUIT))
             return
@@ -142,7 +159,7 @@ class Environment:
             if self.tileMatrix[srcY][srcX].type == TileType.PLAYER:
                 pygame.event.post(pygame.event.Event(LOSE))
 
-        if self.tileMatrix[dstY][dstX].type == TileType.DOOR:
+        if self.tileMatrix[dstY][dstX].type == TileType.BORDER:
             pygame.event.post(pygame.event.Event(WINNER))
 
         if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
