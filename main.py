@@ -77,9 +77,11 @@ def main(level):
                 if key[pygame.K_r]:
                     music.stop()
                     main(levelList.pop(0))
+                if key[pygame.KEYUP]:
+                    playSound(random.choice(messagePool), 1, 0)
+
                 env.movePlayer(key)
-            if event.type == pygame.KEYUP:
-                playSound(random.choice(messagePool), 1, 0)
+
             
                     
         env.draw(WIN)
