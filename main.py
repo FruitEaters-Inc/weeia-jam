@@ -51,6 +51,7 @@ def printBrainDamage(listOfTexts, fontColor, fontSize, position):
             playSound(random.choice(earDamage), 1, 0)
         WIN.set_colorkey(CRIMSON)
         pygame.display.update()
+        pygame.time.delay(500)
 
 
 
@@ -74,7 +75,7 @@ def main(level):
     while True:
         clock.tick(FPS)  # control FPS of the game
         for event in pygame.event.get():
-            if event.type == pygame.QUIT: 
+            if event.type == pygame.QUIT:
                 break
             if event.type == pygame.KEYDOWN:
                 key = pygame.key.get_pressed()
@@ -86,8 +87,13 @@ def main(level):
                 if key[pygame.K_r]:
                     music.stop()
                     main(level)
-                RANDOM_COLOR = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-                printBrainDamage(brainDamage, RANDOM_COLOR, random.randint(1, 5), 300)
+
+                losuj = random.randint(0, 100)
+                if losuj > 95:
+                    RANDOM_COLOR = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+                    printBrainDamage(brainDamage, RANDOM_COLOR, random.randint(1, 5), 300)
+
+
 
                 env.movePlayer(key)
 
