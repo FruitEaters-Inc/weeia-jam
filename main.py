@@ -3,6 +3,7 @@ import os
 from game.environment import *
 from pygame import mixer
 from game.assets.earDamage import *
+from game.assets.brainDamage import *
 import random
 
 pygame.font.init()
@@ -14,7 +15,7 @@ FPS = 60
 #GLOBAL
 windowsDimensions = (HEIGHT * SPRITE_SIZE), (HEIGHT * SPRITE_SIZE)
 WIN = pygame.display.set_mode(windowsDimensions)
-pygame.display.set_caption("MindHacker")
+pygame.display.set_caption("BrainDamage")
 
 levelList = [
     'intro.txt',
@@ -36,17 +37,25 @@ WHITE = (255, 255, 255)
 CRIMSON = (220, 20, 60)
 
 
+
 def playSound(fileName, volume, times):
     sound = pygame.mixer.Sound(os.path.join('game', 'assets', 'music', fileName))
     sound.set_volume(volume)
     sound.play(times)
 
-def showText(text, color):
-     draw_text = WINNER_FONT.render(text, 1, color)
-     WIN.blit(draw_text, (WIDTH/2 - draw_text.get_width()) /
-              2, HEIGHT/2 - draw_text.get_width()/2)
+def printBrainDamage(listOfTexts, fontColor, fontSize, position):
+        showText(random.choice(listOfTexts), fontColor, fontSize, position)
+        playSound(random.choice(earDamage), 1, 0)
+        WIN.set_colorkey(CRIMSON)
+        pygame.display.update()
+
+
+
+def showText(text, color, fontSize, maxPos):
+     draw_text = WINNER_FONT.render(text, fontSize, color)
+     WIN.blit(draw_text, (random.randint(10, maxPos), random.randint(10, maxPos)))
      pygame.display.update()
-     pygame.time.delay(5000)
+     pygame.time.delay(1000)
 
 # main window
 def main(level):
@@ -67,11 +76,12 @@ def main(level):
                 break
             if event.type == pygame.KEYDOWN:
                 key = pygame.key.get_pressed()
-                if key[pygame.K_p]:
-                    playSound(random.choice(messagePool), 1, 0)
                 if key[pygame.K_r]:
                     music.stop()
                     main(level)
+                if key[pygame.K_0]:
+                    RANDOM_COLOR = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+                    printBrainDamage(brainDamage, RANDOM_COLOR, random.randint(1, 5), 300)
 
                 env.movePlayer(key)
 

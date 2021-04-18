@@ -3,6 +3,7 @@ import os
 from game import *
 import pygame
 from pygame import mixer
+import random
 
 WIDTH = 20
 HEIGHT = 20
@@ -11,7 +12,7 @@ SPRITE_SIZE = 32
 #WINNER EVENT
 pygame.font.init()
 WINNER = pygame.USEREVENT + 1
-WINNER_FONT = pygame.font.SysFont('comicsans', 100)
+WINNER_FONT = pygame.font.SysFont('comicsans', 50)
 
 #LOSE EVENT
 LOSE = pygame.USEREVENT + 2
