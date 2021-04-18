@@ -67,12 +67,13 @@ def main(level):
                 break
             if event.type == pygame.KEYDOWN:
                 key = pygame.key.get_pressed()
+                if key[pygame.K_p]:
+                    playSound(random.choice(messagePool), 1, 0)
                 if key[pygame.K_r]:
                     music.stop()
                     main(level)
+
                 env.movePlayer(key)
-            if event.type == pygame.KEYUP:
-                playSound(random.choice(messagePool), 1, 0)
 
             if event.type == LOSE:
                 print("Foo")
