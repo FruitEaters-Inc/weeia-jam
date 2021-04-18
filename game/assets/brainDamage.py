@@ -27,5 +27,7 @@ messagePool = [
     "...",
     "...tur tur, tur...",
     "...nie...",
-    "...aktywuj system Windows..."
+    "...aktywuj system Windows...",
+    "...golimar...",
+    "...elektroniki, informatyki..."
 ]
