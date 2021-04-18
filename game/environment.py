@@ -33,6 +33,8 @@ class TileType(Enum):
     SUITCASE = 11
     DOOR = 12
     NPC = 13
+    EITST = 14
+    CLOCK = 15
 
 
 
@@ -56,7 +58,9 @@ TILE_DICT = {
     'T': [TileType.BRIDGE, 'hole_crate.png'],
     '*': [TileType.SUITCASE, 'suitcase.png'],
     '&': [TileType.DOOR, 'doorUp.png'],
-    'E': [TileType.NPC, 'npc.png']
+    'E': [TileType.NPC, 'npc.png'],
+    'J': [TileType.EITST, 'yebac.png'],
+    'C': [TileType.CLOCK, 'clock.png']
     }
 
 
