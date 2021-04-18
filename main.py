@@ -58,7 +58,6 @@ def showText(text, color, fontSize, maxPos):
      draw_text = WINNER_FONT.render(text, fontSize, color)
      WIN.blit(draw_text, (random.randint(10, maxPos), random.randint(10, maxPos)))
      pygame.display.update()
-     pygame.time.delay(1000)
 
 # main window
 def main(level):
@@ -87,9 +86,8 @@ def main(level):
                 if key[pygame.K_r]:
                     music.stop()
                     main(level)
-                if key[pygame.K_0]:
-                    RANDOM_COLOR = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-                    printBrainDamage(brainDamage, RANDOM_COLOR, random.randint(1, 5), 300)
+                RANDOM_COLOR = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+                printBrainDamage(brainDamage, RANDOM_COLOR, random.randint(1, 5), 300)
 
                 env.movePlayer(key)
 
