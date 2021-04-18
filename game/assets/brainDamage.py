@@ -26,5 +26,6 @@ messagePool = [
     "...hesoyam...",
     "...",
     "...tur tur, tur...",
-    "...nie..."
+    "...nie...",
+    "...aktywuj system Windows..."
 ]
