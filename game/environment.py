@@ -2,10 +2,20 @@ from enum import Enum
 import os
 from game import *
 import pygame
+from pygame import mixer
 
 WIDTH = 20
 HEIGHT = 20
 SPRITE_SIZE = 32
+
+#WINNER EVENT
+pygame.font.init()
+WINNER = pygame.USEREVENT + 1
+WINNER_FONT = pygame.font.SysFont('comicsans', 100)
+
+#LOSE EVENT
+LOSE = pygame.USEREVENT + 2
+LOSE_FONT = WINNER_FONT
 
 class TileType(Enum):
     EMPTY = 1
@@ -125,6 +135,12 @@ class Environment:
                 self.tileMatrix[srcY][srcX] = Tile(*TILE_DICT['_'])
                 self.tileMatrix[dstY][dstX] = Tile(*TILE_DICT['T'])
                 return True
+
+            if self.tileMatrix[srcY][srcX].type == TileType.PLAYER:
+                pygame.event.post(pygame.event.Event(LOSE))
+
+        if self.tileMatrix[dstY][dstX].type == TileType.DOOR:
+            pygame.event.post(pygame.event.Event(WINNER))
 
         if self.tileMatrix[dstY][dstX].type in MOVEABLE_TILE:
             if self.checkMove(dstX, dstY, move):

@@ -30,13 +30,6 @@ levelList = [
     'level11.txt',
     'finale.txt'
 ]
-#WINNER EVENT
-WINNER = pygame.USEREVENT + 1
-WINNER_FONT = pygame.font.SysFont('comicsans', 100)
-
-#LOSE EVENT
-LOSE = pygame.USEREVENT + 2
-LOSE_FONT = WINNER_FONT
 
 #FONT COLORS
 WHITE = (255, 255, 255)
@@ -76,13 +69,16 @@ def main(level):
                 key = pygame.key.get_pressed()
                 if key[pygame.K_r]:
                     music.stop()
-                    main(levelList.pop(0))
-                if key[pygame.KEYUP]:
-                    playSound(random.choice(messagePool), 1, 0)
-
+                    main(level)
                 env.movePlayer(key)
+            if event.type == pygame.KEYUP:
+                playSound(random.choice(messagePool), 1, 0)
 
-            
+            if event.type == LOSE:
+                print("Foo")
+            if event.type == WINNER:
+                music.stop()
+                main(levelList.pop(0))
                     
         env.draw(WIN)
 
