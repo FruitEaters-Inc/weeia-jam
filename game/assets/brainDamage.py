@@ -29,5 +29,8 @@ messagePool = [
     "...nie...",
     "...aktywuj system Windows...",
     "...golimar...",
-    "...elektroniki, informatyki..."
+    "...elektroniki, informatyki...",
+    "...od Kether do Malkuth...",
+    "...od stacji do stacji...",
+    "...za późno..."
 ]
