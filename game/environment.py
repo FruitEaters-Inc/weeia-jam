@@ -46,7 +46,7 @@ TILE_DICT = {
     '$': [TileType.WALL1, 'wall2.png'],
     '_': [TileType.EMPTY, 'empty.png'],
     'X': [TileType.CRATE, 'crate.png'],
-    '|': [TileType.BORDER, 'border.png'],
+    '|': [TileType.BORDER, 'doorUp.png'],
     'S': [TileType.PLAYER, 'spawn.png'],
     'V': [TileType.DEATH, 'hole1.png'],
     'T': [TileType.BRIDGE, 'hole_crate.png'],
