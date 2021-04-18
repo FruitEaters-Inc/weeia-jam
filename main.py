@@ -13,8 +13,8 @@ WIN = pygame.display.set_mode(windowsDimensions)
 pygame.display.set_caption("MindHacker")
 
 # main window
-def main():
-    env = Environment(os.path.join('game','assets','levels','leveldebug.txt'))
+def main(level):
+    env = Environment(os.path.join('game','assets','levels',level))
     pygame.init()
     clock = pygame.time.Clock()
     WIN.fill(BG_COLOR)
@@ -31,11 +31,13 @@ def main():
                 break
             if event.type == pygame.KEYDOWN:
                 key = pygame.key.get_pressed()
+                if key[pygame.K_r]: main(level)
                 env.movePlayer(key)
+            
                     
         env.draw(WIN)
 
     pygame.quit()
 
 if __name__ == "__main__":
-    main()
+    main('leveldebug.txt')
