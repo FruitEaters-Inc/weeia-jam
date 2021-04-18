@@ -25,5 +25,6 @@ messagePool = [
     "...coraz bardziej...",
     "...hesoyam...",
     "...",
-    "...tur tur, tur..."
+    "...tur tur, tur...",
+    "...nie..."
 ]
