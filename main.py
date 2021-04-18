@@ -26,13 +26,6 @@ levelList = [
     'level11.txt',
     'finale.txt'
 ]
-#WINNER EVENT
-WINNER = pygame.USEREVENT + 1
-WINNER_FONT = pygame.font.SysFont('comicsans', 100)
-
-#LOSE EVENT
-LOSE = pygame.USEREVENT + 2
-LOSE_FONT = WINNER_FONT
 
 #FONT COLORS
 WHITE = (255, 255, 255)
