@@ -89,11 +89,9 @@ def main(level):
                     main(level)
 
                 losuj = random.randint(0, 100)
-                if losuj > 95:
+                if losuj > 93:
                     RANDOM_COLOR = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
                     printBrainDamage(brainDamage, RANDOM_COLOR, random.randint(1, 5), 300)
-
-
 
                 env.movePlayer(key)
 
