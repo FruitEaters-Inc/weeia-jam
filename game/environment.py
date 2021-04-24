@@ -9,14 +9,15 @@ WIDTH = 20
 HEIGHT = 20
 SPRITE_SIZE = 32
 
-#WINNER EVENT
+# WINNER EVENT
 pygame.font.init()
 WINNER = pygame.USEREVENT + 1
 WINNER_FONT = pygame.font.SysFont('comicsans', 50)
 
-#LOSE EVENT
+# LOSE EVENT
 LOSE = pygame.USEREVENT + 2
 LOSE_FONT = WINNER_FONT
+
 
 class TileType(Enum):
     GLASS = 0
@@ -37,12 +38,12 @@ class TileType(Enum):
     CLOCK = 15
 
 
-
 class Direction(Enum):
     UP = 1
     LEFT = 2
     DOWN = 3
     RIGHT = 4
+
 
 TILE_DICT = {
     '^': [TileType.GLASS, 'glass.png'],
@@ -61,17 +62,18 @@ TILE_DICT = {
     'E': [TileType.NPC, 'npc.png'],
     'J': [TileType.EITST, 'yebac.png'],
     'C': [TileType.CLOCK, 'clock.png']
-    }
-
+}
 
 MOVEABLE_TILE = [TileType.CRATE, TileType.PLAYER]
 ENTERABLE = [TileType.EMPTY, TileType.BRIDGE]
+
 
 class Tile:
     def __init__(self, tileType, fileName):
         self.type = tileType
         self.sprite = pygame.image.load(
-            os.path.join('game','assets','textures', fileName))
+            os.path.join('game', 'assets', 'textures', fileName))
+
 
 class Environment:
     def __init__(self, path):
@@ -80,7 +82,7 @@ class Environment:
         self.sprite_size = SPRITE_SIZE
         self.tileMatrix = [
             [Tile(*TILE_DICT['#']) for i in range(0, self.width)
-                ] for x in range(0, self.height)]
+             ] for x in range(0, self.height)]
 
         self.openFile(path)
 
@@ -95,7 +97,7 @@ class Environment:
         for y in range(self.height):
             for x in range(self.width):
                 winObj.blit(
-                    self.tileMatrix[y][x].sprite, 
+                    self.tileMatrix[y][x].sprite,
                     (x * self.sprite_size, y * self.sprite_size))
 
         pygame.display.update()
@@ -117,7 +119,6 @@ class Environment:
         npcX, npcY = self.getNpcPosition()
         self.tileMatrix[plY][plX], self.tileMatrix[npcY][npcX
         ] = self.tileMatrix[npcY][npcX], self.tileMatrix[plY][plX]
-    
 
     def update(self, srcX, srcY, dstX, dstY):
         dst = self.tileMatrix[dstY][dstX]
@@ -154,7 +155,7 @@ class Environment:
         if self.tileMatrix[dstY][dstX].type in ENTERABLE:
             self.update(srcX, srcY, dstX, dstY)
             return True
-        
+
         if self.tileMatrix[dstY][dstX].type == TileType.DEATH:
             if self.tileMatrix[srcY][srcX].type == TileType.CRATE:
                 self.tileMatrix[srcY][srcX] = Tile(*TILE_DICT['_'])
@@ -171,5 +172,5 @@ class Environment:
             if self.checkMove(dstX, dstY, move):
                 self.update(srcX, srcY, dstX, dstY)
                 return True
-  
+
         return False
