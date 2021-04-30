@@ -1,7 +1,7 @@
 # WEEIA-JAM
 
 ## Jam's topic :arrow_right: 'A hacker hacked your brain', explanation:
-<br>
+
 #### You are playing in the headquarters of a big corporation. Your goal is to beat all of the levels - 
 #### - walk through each floor. The last floor is occupied by the Hacker. He is stealing all of the data, 
 #### stored on the last segment of the building. To beat a level you need to solve logic puzzles - 
