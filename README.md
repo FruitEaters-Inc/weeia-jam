@@ -1,4 +1,4 @@
-# WEEIA-JAM
+# WEEIA-JAM - hackathon
 
 ## Jam's topic :arrow_right: 'A hacker hacked your brain', explanation:
 
