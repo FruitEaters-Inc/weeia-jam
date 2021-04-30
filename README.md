@@ -24,6 +24,12 @@
 ![BrainDamageMap](https://user-images.githubusercontent.com/78366670/116733503-77aaf280-a9ec-11eb-9033-34347cc3541a.png)
 ![BrainDamageMap1](https://user-images.githubusercontent.com/78366670/116733539-8396b480-a9ec-11eb-87a2-d55323db2f83.png)
 
+## Authors:
+### Szymon Górka
+### Michał Włodarczyk
+### Daniel Wieczorek
+### Szymon Suchorab
+
 
 
 
