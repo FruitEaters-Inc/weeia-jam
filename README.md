@@ -9,8 +9,8 @@
 #### Additionally each level is harder to beat - the closer you are to the Hacker the more access he has to your brain.
 #### Each of the Hacker's 'Brain Damages' (hacks) freezes your character for 1 second... On top of that, sometimes you
 #### begin to hallucinate and hear weird voices that make it harder to focus. Odd, eerie sounds, voices can be heard.
-#### Scary text appears on players screen along with the whispers... Along the way you meet the workers. You can hack them aswell -
-#### - control them to beat the level. Good luck ...
+#### Scary text appears on players screen along with the whispers... Along the way you meet the workers. You can hack them as well -
+#### - control them to beat the level. Good luck...
 <br />
 
 ## BrainDamage :brain: - presentation :snake: :
