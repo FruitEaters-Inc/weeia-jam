@@ -10,10 +10,11 @@
 #### Each of the Hacker's 'Brain Damages' (hacks) freezes your character for 1 second... On top of that, sometimes you
 #### begin to hallucinate and hear weird voices that make it harder to focus. Odd, eerie sounds, voices can be heard.
 #### Scary text appears on players screen along with the whispers... Good luck.
-#### \n
-
 ####
-## BrainDamage :brain: - game written in Python :snake:
+####
+
+## BrainDamage :brain: - presentation :snake: :
+![Level](https://prnt.sc/12bfyv2)
 
 
 
